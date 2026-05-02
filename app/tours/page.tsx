@@ -7,10 +7,16 @@ interface Toursdata {
     image: string;
     price: string;
 };
-const Tours = async () => {
+
+const fetchData = async ():Promise<Toursdata[]> => { 
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const response = await fetch(url); // since we are using the server component we can just use the fetch without importing it.
     const tours: Toursdata[] = await response.json();
+    return tours
     //console.log(tours);
+};
+const Tours = async () => {
+    const tours = await fetchData();
 
     return (
         <div>
