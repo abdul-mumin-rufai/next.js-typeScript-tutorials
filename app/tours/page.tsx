@@ -1,4 +1,4 @@
-const url = 'https://www.course-api.com/react-tours-projects';
+const url = 'https://www.course-api.com/react-tours-project';
 
 interface Toursdata { 
     id: string;
@@ -20,7 +20,7 @@ const Tours = async () => {
 
     return (
         <div>
-            <h1 className="text text-3xl font-bold text-center capitalize">
+            <h1 className="text text-3xl font-bold text-center capitalize my-4">
                 this is the tours page
             </h1>
             <section>
