@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const url = 'https://www.course-api.com/react-tours-project';
 
 interface Toursdata { 
@@ -9,7 +11,7 @@ interface Toursdata {
 };
 
 const fetchData = async ():Promise<Toursdata[]> => { 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    //await new Promise((resolve) => setTimeout(resolve, 3000));
     const response = await fetch(url); // since we are using the server component we can just use the fetch without importing it.
     const tours: Toursdata[] = await response.json();
     return tours
@@ -25,9 +27,14 @@ const Tours = async () => {
             </h1>
             <section>
                 {tours.map((tour) => {
-                    return <h2 key={tour.id}>
-                        {tour.name}
-                    </h2>
+                    return (
+                        <Link className="hover:text-blue-500" key={tour.id} href={`/tours/${tour.id}`}>
+                            <h2 >
+                                {tour.name}
+                            </h2>
+                        </Link>
+                        
+                    )
                 })}
             </section>
 
