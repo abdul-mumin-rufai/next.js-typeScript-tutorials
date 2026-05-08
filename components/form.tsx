@@ -1,11 +1,12 @@
 import React from 'react'
 
-const createUser = async () => {
-    'use server'
-    console.log('creating user...');
-    
-}
 const FormInput = () => {
+
+    const createUser = async () => {
+        'use server'
+        console.log('creating user...');
+    }
+
     return (
         <form action={createUser} className={formStyle}>
             <h1 className='mt-4 font-bold capitalize'>
