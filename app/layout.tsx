@@ -19,7 +19,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   // Layout allow us to share UI within other pages.
   return (
     <html lang='en'>
-      <body className='bg-gray-100 text-gray-900' >
+      <body className='bg-gray-100 text-gray-900'
+        data-new-gr-c-s-check-loaded="14.1282.0"
+        data-gr-ext-installed=""
+      >
         <Navbar />
         <main className='max-w-3xl mx-auto py-4 flex gap-x-4'>
           {children}
