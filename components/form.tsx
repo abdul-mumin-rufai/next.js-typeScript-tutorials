@@ -1,12 +1,9 @@
+'use client'
 import React from 'react'
+import { createUser } from '@/utils/actions';
 
 const FormInput = () => {
-
-    const createUser = async () => {
-        'use server'
-        console.log('creating user...');
-    }
-
+    
     return (
         <form action={createUser} className={formStyle}>
             <h1 className='mt-4 font-bold capitalize'>
@@ -14,7 +11,7 @@ const FormInput = () => {
             </h1>
             <input
                 type="text"
-                name='firstNmae'
+                name='firstName'
                 required
                 defaultValue='Abdul-Mumin'
                 className={inputStyle}
