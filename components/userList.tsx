@@ -1,6 +1,9 @@
 import React from 'react'
+import { fetchUsers } from '@/utils/actions';
 
-const UserList = () => {
+
+const UserList = async () => {
+  const users = await fetchUsers();
   return (
     <div>
         <h1>
