@@ -1,5 +1,6 @@
 'use server'
 import { readFile, writeFile } from "fs/promises";
+import { revalidatePath } from "next/cache";
 
 
 interface User { 
@@ -14,9 +15,11 @@ export const createUser = async (formData: FormData) => {
     const lastName = formData.get('lastName') as string;
     const newUser: User = { firstName, lastName, id: Date.now().toString() }
     await saveUser(newUser);
+    revalidatePath('/actions') // revalidating the actions page
 };
 
 // we have to fetch the users and push the new user to it 
+// after we fetch the user we have to revalidate the page we will display the users to update it whenn an new user is added
 export const fetchUsers = async (): Promise<User[]> => { 
     const results = await readFile('users.json', { encoding: 'utf8' });
     const users = results ? JSON.parse(results) : [];
