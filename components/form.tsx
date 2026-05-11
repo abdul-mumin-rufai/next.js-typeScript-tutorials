@@ -1,7 +1,17 @@
 'use client'
 import React from 'react'
 import { createUser } from '@/utils/actions';
+import { useFormStatus } from 'react-dom';
 
+
+const SubmitBtn = () => { 
+    const result = useFormStatus();
+    return (
+        <button type='submit' className={btnStyle} disabled={result.pending}>
+            {result.pending? 'form is submitting': 'Submit'}
+        </button>
+    );
+};
 const FormInput = () => {
     
     return (
@@ -23,11 +33,9 @@ const FormInput = () => {
                 defaultValue='Rufai'
                 className={inputStyle}
             />
-            <button type='submit' className={btnStyle}>
-                submit
-            </button>
+            <SubmitBtn />
         </form>
-    )
+    );
 };
 
 export default FormInput;

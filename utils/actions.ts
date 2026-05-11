@@ -10,6 +10,7 @@ interface User {
 };
 export const createUser = async (formData: FormData) => {
     // get the firstName from the input field
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const firstName = formData.get('firstName') as string;
     // grt the lastName from the input field
     const lastName = formData.get('lastName') as string;
