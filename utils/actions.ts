@@ -15,8 +15,14 @@ export const createUser = async (formData: FormData) => {
     // grt the lastName from the input field
     const lastName = formData.get('lastName') as string;
     const newUser: User = { firstName, lastName, id: Date.now().toString() }
-    await saveUser(newUser);
-    revalidatePath('/actions') // revalidating the actions page ie to reload the Actions page
+
+    try {
+        await saveUser(newUser);
+        // some logic
+        revalidatePath('/actions') // revalidating the actions page ie to reload the Actions page
+    } catch (error) {
+        // errror message
+    };
 };
 
 // we have to fetch the users and push the new user to it 

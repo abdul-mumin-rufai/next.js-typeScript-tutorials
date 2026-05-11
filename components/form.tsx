@@ -4,6 +4,7 @@ import { createUser } from '@/utils/actions';
 import { useFormStatus } from 'react-dom';
 
 
+// the useFormStatus hook mus be in component and rendered in a component
 const SubmitBtn = () => { 
     const result = useFormStatus();
     return (
@@ -33,7 +34,7 @@ const FormInput = () => {
                 defaultValue='Rufai'
                 className={inputStyle}
             />
-            <SubmitBtn />
+            <SubmitBtn /> {/* the useFormStatus hook mus be in component and rendered in a component */}
         </form>
     );
 };
