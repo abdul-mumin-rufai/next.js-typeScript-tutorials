@@ -44,3 +44,12 @@ const saveUser = async (user:User):Promise<void> => {
     users.push(user);
     await writeFile('users.json', JSON.stringify(users));
 };
+
+// action to delete users
+export const deleteUserAction  = async (formData: FormData) => {
+    const userId = formData.get('id') as string;
+    const users = await fetchUsers();
+    const updateUsers = users.filter((user: User) => user.id !== userId);
+    await writeFile('users.json', JSON.stringify(updateUsers));
+   revalidatePath('/actions') 
+ };
