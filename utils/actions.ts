@@ -51,5 +51,17 @@ export const deleteUserAction  = async (formData: FormData) => {
     const users = await fetchUsers();
     const updateUsers = users.filter((user: User) => user.id !== userId);
     await writeFile('users.json', JSON.stringify(updateUsers));
-   revalidatePath('/actions') 
- };
+    revalidatePath('/actions') 
+};
+ 
+
+// this method is secured because users can not see the useId in the html component
+export const removeUserAction = async (userId: string, formData: FormData) => { 
+    const userName = formData.get('name') as string;
+    console.log(userName);
+
+    const users = await fetchUsers();
+    const updateUsers = users.filter((user: User) => user.id !== userId);
+    await writeFile('users.json', JSON.stringify(updateUsers));
+    revalidatePath('/actions');
+};
