@@ -8,20 +8,24 @@ interface User {
     lastName: string;
     id:string
 };
-export const createUser = async (formData: FormData) => {
+export const createUser = async (prevSate: any, formData: FormData) => {
     // get the firstName from the input field
     await new Promise((resolve) => setTimeout(resolve, 3000));
     const firstName = formData.get('firstName') as string;
     // grt the lastName from the input field
     const lastName = formData.get('lastName') as string;
     const newUser: User = { firstName, lastName, id: Date.now().toString() }
-
+    console.log(prevSate);
+    
     try {
+        //throw new Error(' there was an error') faking an error
         await saveUser(newUser);
         // some logic
         revalidatePath('/actions') // revalidating the actions page ie to reload the Actions page
+        return 'user created succesfully'
     } catch (error) {
         // errror message
+        return 'failed to create user'
     };
 };
 

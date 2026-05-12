@@ -2,6 +2,8 @@
 import React from 'react'
 import { createUser } from '@/utils/actions';
 import { useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+
 
 
 // the useFormStatus hook mus be in component and rendered in a component
@@ -14,10 +16,13 @@ const SubmitBtn = () => {
     );
 };
 const FormInput = () => {
-    
+    // useFormState takes in an Action function and an initial value and returns a current value ie message and current Action
+    const [message, formAction] = useActionState(createUser, null);
+    // the intial state is == to prevSate when the user hasnt submitted.
     return (
-        <form action={createUser} className={formStyle}>
-            <h1 className='mt-4 font-bold capitalize'>
+        <form action={formAction} className={formStyle}>
+            {message && <p>{message}</p>}
+            <h1 className='mt-1 font-bold capitalize'>
                 create user
             </h1>
             <input
