@@ -1,5 +1,6 @@
 import React from 'react'
 import { fetchUsers } from '@/utils/actions';
+import DeleteUsers from './deleteUsers';
 
 
 const UserList = async () => {
@@ -9,8 +10,9 @@ const UserList = async () => {
       {users.length ? <div>
         {users.map((user) => {
           return (
-            <h1 key={user.id}>
-              <p className='capitalize mt-1'>{user.firstName} { user.lastName}</p>
+            <h1 className='flex justify-between items-center mb-2' key={user.id}>
+              <p className='capitalize mt-1'>{user.firstName} {user.lastName}</p>
+              <DeleteUsers id={user.id } />
             </h1>
           )
         })}
