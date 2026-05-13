@@ -33,7 +33,7 @@ export const createUser = async (prevSate: any, formData: FormData) => {
 // after we fetch the user we have to revalidate the page we will display the users to update it whenn an new user is added
 export const fetchUsers = async (): Promise<User[]> => { 
     const results = await readFile('users.json', { encoding: 'utf8' });
-    const users = results ? JSON.parse(results) : [];
+    const users = results ? JSON.parse(results) : []; // converting users into an object
     return users;
 };
 
@@ -42,7 +42,7 @@ export const fetchUsers = async (): Promise<User[]> => {
 const saveUser = async (user:User):Promise<void> => { 
     const users = await fetchUsers();
     users.push(user);
-    await writeFile('users.json', JSON.stringify(users));
+    await writeFile('users.json', JSON.stringify(users));  // converting users into a string
 };
 
 // action to delete users
