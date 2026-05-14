@@ -6,14 +6,14 @@ type ApiUser = {
     id: number;
     name: string;
 }
-export const GET = async (request: Request) => {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
+export const GET = async (request: NextRequest) => {
+    const id = request.nextUrl.searchParams.get('id');
+    console.log(request.url);
+    
     console.log(id);
-    console.log(request);
     
 
     const users = await fetchUsers();
     //const mumin: ApiUser[] = [{ id: 15, name: 'Queit Developer' }, { id: 57, name: 'HENNGE Intern' }];
-    return Response.json(users)
+    return NextResponse.redirect(new URL('/', request.url));
 };
