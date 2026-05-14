@@ -39,7 +39,7 @@ export const fetchUsers = async (): Promise<User[]> => {
 
 
 // we have push the new user to the list of users and updated the users.json file
-const saveUser = async (user:User):Promise<void> => { 
+export const saveUser = async (user:User):Promise<void> => { 
     const users = await fetchUsers();
     users.push(user);
     await writeFile('users.json', JSON.stringify(users));  // converting users into a string
