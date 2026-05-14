@@ -3,7 +3,7 @@ import rufaiImg from '@/images/Rufai.png';
 import Image from 'next/image';
 const url = 'https://www.course-api.com/images/tours/tour-1.jpeg';
 
-const ToursId = ({ params }: { params: { id: string } }) => {
+const ToursId = async ({ params }: { params: { id: string } }) => {
   console.log(params);
   return (
     <div className=' text-4xl'>
