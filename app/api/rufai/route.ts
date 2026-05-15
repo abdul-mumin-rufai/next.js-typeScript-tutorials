@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchUsers, saveUser } from "@/utils/actions";
-import { revalidatePath } from "next/cache";
 
 type ApiUser = {
     id: number;
