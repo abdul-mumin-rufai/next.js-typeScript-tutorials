@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { fetchUsers, saveUser } from "@/utils/actions";
+import { revalidatePath } from "next/cache";
 
 type ApiUser = {
     id: number;
@@ -18,10 +19,10 @@ export const GET = async (request: NextRequest) => {
 };
 
 export const POST = async (request:Request) => { 
-    const user = await request.json();
+    const user = await request.json(); //created the user during the POST request 
     const newUser = { ...user, id: Date.now().toString() };
     console.log(newUser);
     
     await saveUser(newUser);
-    return Response.json({msg: 'user added sucessfully'})
+    return Response.json({ msg: 'user added sucessfully' })
 };
