@@ -7,7 +7,7 @@ const UserList = async () => {
   const users = await fetchUsers();
   return (
     <div>
-      {users.length ? <div>
+      {users.length ? <div className='max-w-lg'>
         {users.map((user) => {
           return (
             <h1 className='flex justify-between items-center mb-2' key={user.id}>
